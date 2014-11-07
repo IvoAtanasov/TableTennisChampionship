@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TableTennisChampionshipMain.Models
+namespace TableTennisChampionshipMain.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
