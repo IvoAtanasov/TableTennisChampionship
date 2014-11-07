@@ -168,6 +168,7 @@
     <Compile Include="Models\AdvanseGroupCriteria.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatchRule.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Stage.cs" />
     <Compile Include="Models\Tournament.cs" />
