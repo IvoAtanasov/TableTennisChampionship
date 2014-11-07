@@ -91,6 +91,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TableTennisChampionshipMain\TableTennisChampionshipMain.csproj">
+      <Project>{8791f322-d506-4611-8a86-0f3ff80d36fd}</Project>
+      <Name>TableTennisChampionshipMain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
