@@ -37,11 +37,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseMdel\MatchRule.cs" />
-    <Compile Include="DataBaseMdel\Player.cs" />
-    <Compile Include="DataBaseMdel\Stage.cs" />
-    <Compile Include="DataBaseMdel\Tournament.cs" />
-    <Compile Include="DataBaseMdel\TournamentType.cs" />
+    <Compile Include="DataBaseModel\MatchRule.cs" />
+    <Compile Include="DataBaseModel\Player.cs" />
+    <Compile Include="DataBaseModel\Stage.cs" />
+    <Compile Include="DataBaseModel\Tournament.cs" />
+    <Compile Include="DataBaseModel\TournamentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
