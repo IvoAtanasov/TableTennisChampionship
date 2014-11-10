@@ -12,15 +12,16 @@ namespace TableTennisChampionship.Model.DataBaseModel
     {
         [Key]
         public int GameID { get; set; }
+        [Required(ErrorMessage="Няма пореден номер на гейм!")]
         public int GameNumber { get; set; }
         public int PointsWin{get;set;}
         public int PoinsLost{get;set;}
-          [ForeignKey("FK_PlayerGameWon")]
+       
         [Display(Name = "Спечелил играч")]
         [Column("PlayerWon")]
         public int WonPlayerID { get; set; }
         public virtual Player WonPlayer { get; set; }
-        [ForeignKey("FK_PlayerGamelost")]
+     
         [Display(Name = "Загубил играч")]
         [Column("Playerlost")]
         public int LostPlayerID { get; set; }
