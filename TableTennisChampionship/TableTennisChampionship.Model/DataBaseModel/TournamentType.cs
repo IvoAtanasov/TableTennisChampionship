@@ -1,7 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TableTennisChampionship.Models
+namespace TableTennisChampionship.Model.DataBaseModel
 {
     public class TournamentType
     {
@@ -9,5 +10,7 @@ namespace TableTennisChampionship.Models
         public int TournamentTypeID { get; set; }
         [Display(Name="Вид на турнира")]
         public string TournamentTypeName { get; set; }
+
+
     }
 }
