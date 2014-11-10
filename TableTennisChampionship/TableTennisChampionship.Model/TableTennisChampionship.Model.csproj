@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="DataBaseModel\AdvanceGroupCriteria.cs" />
     <Compile Include="DataBaseModel\Game.cs" />
-    <Compile Include="DataBaseModel\GroupItem.cs" />
     <Compile Include="DataBaseModel\Match.cs" />
     <Compile Include="DataBaseModel\MatchRule.cs" />
     <Compile Include="DataBaseModel\Player.cs" />
