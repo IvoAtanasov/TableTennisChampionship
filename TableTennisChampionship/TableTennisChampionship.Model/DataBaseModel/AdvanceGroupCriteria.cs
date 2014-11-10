@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TableTennisChampionship.Model.DataBaseModel
 {
-    class AdvanceGroupCriteria
+    public class AdvanceGroupCriteria
     {
         [Key]
         public int AdvanceGroupCriteriaID { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TableTennisChampionship.Models
+namespace TableTennisChampionship.Model.DataBaseModel
 {
     public class Stage
     {   
