@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D6E9B10-C33D-4E81-B003-3C20A6B105F6}</ProjectGuid>
+    <ProjectGuid>{3698B1E6-E01D-48B5-B223-C922121A1CCD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TableTennisChampionship.Model</RootNamespace>
