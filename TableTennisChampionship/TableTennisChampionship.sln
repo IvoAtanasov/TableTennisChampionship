@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisChampionship.Tests", "TableTennisChampionship.Tests\TableTennisChampionship.Tests.csproj", "{9225E276-E1C2-434C-B4C8-629AD2232093}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisChampionshipMain", "TableTennisChampionshipMain\TableTennisChampionshipMain.csproj", "{8791F322-D506-4611-8A86-0F3FF80D36FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisChampionship.Model", "TableTennisChampionship.Model\TableTennisChampionship.Model.csproj", "{3698B1E6-E01D-48B5-B223-C922121A1CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableTennisChampionshipData", "TableTennisChampionshipData\TableTennisChampionshipData.csproj", "{856B890D-4498-4ABC-8CC5-604C5834BED8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3698B1E6-E01D-48B5-B223-C922121A1CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3698B1E6-E01D-48B5-B223-C922121A1CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3698B1E6-E01D-48B5-B223-C922121A1CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856B890D-4498-4ABC-8CC5-604C5834BED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856B890D-4498-4ABC-8CC5-604C5834BED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856B890D-4498-4ABC-8CC5-604C5834BED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856B890D-4498-4ABC-8CC5-604C5834BED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
