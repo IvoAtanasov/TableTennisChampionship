@@ -182,7 +182,6 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\GroupItem.cs" />
-    <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,6 +250,10 @@
     <ProjectReference Include="..\TableTennisChampionship.Model\TableTennisChampionship.Model.csproj">
       <Project>{3698b1e6-e01d-48b5-b223-c922121a1ccd}</Project>
       <Name>TableTennisChampionship.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TableTennisChampionshipData\TableTennisChampionshipData.csproj">
+      <Project>{856b890d-4498-4abc-8cc5-604c5834bed8}</Project>
+      <Name>TableTennisChampionshipData</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

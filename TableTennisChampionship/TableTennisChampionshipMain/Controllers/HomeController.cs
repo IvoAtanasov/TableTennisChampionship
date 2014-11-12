@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TableTennisChampionship.Model.DataBaseModel;
+using WorkingWithDataMvc.Data;
 
 namespace TableTennisChampionshipMain.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IRepository<Match> matches;
+
+        public HomeController(IRepository<Match> matches)
+        {
+            this.matches = matches;
+        }
+
+        public HomeController()
+        {
+
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var matches = this.matches.All();
+
+            return this.View(matches);
           
         }
 
