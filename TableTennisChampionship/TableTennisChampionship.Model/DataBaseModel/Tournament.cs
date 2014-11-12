@@ -15,13 +15,13 @@ namespace TableTennisChampionship.Model.DataBaseModel
         [Display(Name="Крайна дата")]
         public DateTime EndDate { get; set; }
       
-        public int FirstPlacePlayerID { get;set; }
+      
         public virtual Player FirstPlacePlayer { get; set; }
       
-        public int SecondPlacePlayerID { get; set; }
+       
         public virtual Player SecondPlacePlayer { get; set; }
    
-        public int ThirdPlacePlayerID { get; set; }
+     
         public virtual Player ThirdPlacePlayer { get; set; }
         [Required]
         public int TournamentTypeID { get; set; }

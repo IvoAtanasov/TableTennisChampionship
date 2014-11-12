@@ -19,21 +19,16 @@ namespace TableTennisChampionship.Model.DataBaseModel
         public int PlayerLostPoints { get; set; }
      
         [Display(Name = "Спечелил играч")]
-        [Column("PlayerWon")]
+     
         public int WonPlayerID { get; set; }
         public virtual Player WonPlayer { get; set; }
    
         [Display(Name = "Загубил играч")]
-        [Column("PlayerLost")]
-        public int LostPlayerID { get; set; }
-        public virtual Player LostPlayer { get; set; }
-
         
-        public int TournamentID { get; set; }
+        public virtual Player LostPlayer { get; set; }
+      
         public virtual Tournament Tournament { get; set; }
 
-       
-        public int StageID { get; set; }
         public virtual Stage Stage { get; set; }
 
 
