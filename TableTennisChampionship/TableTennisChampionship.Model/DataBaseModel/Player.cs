@@ -17,6 +17,5 @@ namespace TableTennisChampionship.Model.DataBaseModel
         public string PhotoFile { get; set; }
         [Display(Name="Години")]
         public int? Age { get; set; }
-
     }
 }

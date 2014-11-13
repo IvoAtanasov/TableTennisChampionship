@@ -24,9 +24,9 @@ namespace TableTennisChampionshipMain.Controllers
 
         public ActionResult Index()
         {
-            var matches = this.matches.All();
+            //var matches = this.matches.All();
 
-            return this.View(matches);
+            return this.View();
           
         }
 

@@ -24,10 +24,10 @@ namespace TableTennisChampionship.Model.DataBaseModel
      
         public virtual Player ThirdPlacePlayer { get; set; }
         [Required]
-        public int TournamentTypeID { get; set; }
+     
         public virtual TournamentType TournamentType { get; set; }
         [Required]
-        public int AdvanceGroupCriteriaID { get; set; }
+     
         public virtual AdvanceGroupCriteria AdvanceGroupCriteria { get; set; }
     }
 }

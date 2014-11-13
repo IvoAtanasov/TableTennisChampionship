@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TableTennisChampionship.Model.DataBaseModel.Match>
+﻿@*@model IEnumerable<TableTennisChampionship.Model.DataBaseModel.Match>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,4 +6,8 @@
 @foreach (var match in Model)
 {
     <p>  @match.MatchName </p>
+}*@
+
+@{
+    @Layout
 }
