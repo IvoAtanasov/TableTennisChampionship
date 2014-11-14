@@ -16,14 +16,14 @@ namespace TableTennisChampionshipData
        { 
        }
 
-        public virtual IDbSet<Tournament> Tournament { get; set; }
-        public virtual IDbSet<TournamentType> TournamentType { get; set; }
-        public virtual IDbSet<Stage> Stage { get; set; }
+        public virtual IDbSet<Tournament> Tournaments { get; set; }
+        public virtual IDbSet<TournamentType> TournamentTypes { get; set; }
+        public virtual IDbSet<Stage> Stages { get; set; }
         public virtual IDbSet<Player> Players { get; set; }
-        public virtual IDbSet<MatchRule> MatchRule { get; set; }
-        public virtual IDbSet<Match> Match { get; set; }
-        public virtual IDbSet<Game> Game { get; set; }
-        public virtual IDbSet<AdvanceGroupCriteria> AdvanceGroupCriteria { get; set; }
+        public virtual IDbSet<MatchRule> MatchRules { get; set; }
+        public virtual IDbSet<Match> Matchs { get; set; }
+        public virtual IDbSet<Game> Games { get; set; }
+        public virtual IDbSet<AdvanceGroupCriteria> AdvanceGroupCriterias { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

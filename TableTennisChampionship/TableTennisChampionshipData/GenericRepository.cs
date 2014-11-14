@@ -86,5 +86,10 @@
 
             entry.State = EntityState.Detached;
         }
+
+        public virtual void SaveChanges()
+        {
+            this.Context.SaveChanges();
+        }
     }
 }

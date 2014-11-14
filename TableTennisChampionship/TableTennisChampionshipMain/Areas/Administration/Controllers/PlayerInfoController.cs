@@ -6,19 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TableTennisChampionship.Model.DataBaseModel;
 using TableTennisChampionshipData;
+using WorkingWithDataMvc.Data;
+using TableTennisChampionshipMain.ViewModels;
+using TableTennisChampionship.Model.DataBaseModel;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
     public class PlayerInfoController : Controller
     {
-        private TableTennisDbContext db = new TableTennisDbContext();
+        private readonly IRepository<Player> player;
 
         // GET: /Administration/PlayerInfo/
         public ActionResult Index()
         {
-            return View(db.Players.ToList());
+            return View();
         }
 
         // GET: /Administration/PlayerInfo/Details/5
@@ -28,12 +30,12 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
-            {
-                return HttpNotFound();
-            }
-            return View(player);
+            //var currentPlayer = player.All().FirstOrDefault(id);
+            //if (player == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         // GET: /Administration/PlayerInfo/Create
@@ -47,12 +49,11 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="PlayerID,FirstName,LastName,PhotoFile,Age")] Player player)
+        public ActionResult Create([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
         {
             if (ModelState.IsValid)
             {
-                db.Players.Add(player);
-                db.SaveChanges();
+            
                 return RedirectToAction("Index");
             }
 
@@ -66,12 +67,12 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
-            {
-                return HttpNotFound();
-            }
-            return View(player);
+            
+            //if (player == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View();
         }
 
         // POST: /Administration/PlayerInfo/Edit/5
@@ -83,8 +84,8 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(player).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(player).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(player);
@@ -97,11 +98,11 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
-            if (player == null)
-            {
-                return HttpNotFound();
-            }
+            //Player player = db.Players.Find(id);
+            //if (player == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(player);
         }
 
@@ -110,9 +111,9 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Player player = db.Players.Find(id);
-            db.Players.Remove(player);
-            db.SaveChanges();
+            //Player player = db.Players.Find(id);
+            //db.Players.Remove(player);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +121,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
