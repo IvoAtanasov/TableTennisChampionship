@@ -48,6 +48,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // GET: /Administration/PlayerInfo/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 
@@ -60,10 +61,19 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-            
+                this.player.Add(new Player { 
+                PlayerID=player.PlayerID,
+                FirstName=player.FirstName,
+                LastName=player.LastName,
+                PhotoFile=player.PhotoFile,
+                Age=player.Age
+                });
+                this.player.SaveChanges();
+                var path =System.IO.Path.Combine(Server.MapPath("~/Content/Pictures/"),player.PhotoFile);
+                
                 return RedirectToAction("Index");
             }
-
+            
             return View(player);
         }
 

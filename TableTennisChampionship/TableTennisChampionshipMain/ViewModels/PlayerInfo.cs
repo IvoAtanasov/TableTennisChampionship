@@ -17,6 +17,7 @@ namespace TableTennisChampionshipMain.ViewModels
         [Required(ErrorMessage = "Фамилията е задължително поле")]
         [Display(Name = "Фамилия")]
         public string LastName { get; set; }
+        [Display(Name = "Профилна снимка")]
         public string PhotoFile { get; set; }
         [Display(Name = "Години")]
         public int? Age { get; set; }

@@ -17,5 +17,7 @@
         void Delete(int id);
 
         void Detach(T entity);
+
+        void SaveChanges();
     }
 }

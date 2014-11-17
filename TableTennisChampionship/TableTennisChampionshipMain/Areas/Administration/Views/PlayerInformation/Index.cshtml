@@ -7,7 +7,9 @@
 <h2>Списък с играчи</h2>
 
 <p>
-    @Html.ActionLink("Добавяне на нов играч", "Create")
+    @Html.ActionLink("Добавяне на нов играч", "Create")<a href="@Url.Action("Create","PlayerInformation")">
+                    <img src="~/Content/image/add.png"/>
+                      </a>
 </p>
 <table class="table">
     <tr>
