@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace TableTennisChampionshipMain.Areas.PlayerInfo
+namespace TableTennisChampionshipMain.Areas.PlayerInfoStat
 {
-    public class PlayerInfoAreaRegistration : AreaRegistration 
+    public class PlayerInfoStatAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "PlayerInfo";
+                return "PlayerInfoStat";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "PlayerInfo_default",
-                "PlayerInfo/{controller}/{action}/{id}",
+                "PlayerInfoStat_default",
+                "PlayerInfoStat/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

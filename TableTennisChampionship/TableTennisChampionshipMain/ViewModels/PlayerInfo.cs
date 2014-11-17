@@ -10,6 +10,7 @@ namespace TableTennisChampionshipMain.ViewModels
 {
     public class PlayerInfo:IMapFrom<Player>
     {
+        public int PlayerID { get; set; }
         [Required(ErrorMessage = "Името задължително поле")]
         [Display(Name = "Име")]
         public string FirstName { get; set; }

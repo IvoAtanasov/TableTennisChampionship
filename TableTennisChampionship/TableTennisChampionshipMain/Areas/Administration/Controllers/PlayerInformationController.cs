@@ -10,17 +10,24 @@ using TableTennisChampionshipData;
 using WorkingWithDataMvc.Data;
 using TableTennisChampionshipMain.ViewModels;
 using TableTennisChampionship.Model.DataBaseModel;
+using AutoMapper.QueryableExtensions;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
-    public class PlayerInfoController : Controller
+    public class PlayerInformationController : Controller
     {
         private readonly IRepository<Player> player;
 
+        public PlayerInformationController(IRepository<Player> player) {
+            this.player = player;
+        }
         // GET: /Administration/PlayerInfo/
         public ActionResult Index()
         {
-            return View();
+            var playerList = player.All()
+                .Project()
+                .To<PlayerInfo>();
+            return View(playerList);
         }
 
         // GET: /Administration/PlayerInfo/Details/5

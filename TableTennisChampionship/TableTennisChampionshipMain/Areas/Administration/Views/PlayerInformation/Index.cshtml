@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TableTennisChampionshipMain.ViewModels.PlayerInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Списък с играчи</h2>
+
+<p>
+    @Html.ActionLink("Добавяне на нов играч", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotoFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.ActionLink("Редакция", "Edit", new { id=item.PlayerID }) |
+            @Html.ActionLink("Инфо", "Details", new { id=item.PlayerID }) |
+            @*@Html.ActionLink("Изтриване", "Delete", new { id=item.PlayerID })*@
+        </td>
+    </tr>
+}
+
+</table>

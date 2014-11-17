@@ -179,8 +179,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\PlayerInfoController.cs" />
-    <Compile Include="Areas\PlayerInfo\PlayerInfoAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\PlayerInformationController.cs" />
+    <Compile Include="Areas\PlayerInfoStat\PlayerInfoStatAreaRegistration.cs" />
     <Compile Include="Areas\TournamentInfo\TournamentInfoAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -212,15 +212,15 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administration\Views\web.config" />
-    <Content Include="Areas\PlayerInfo\Views\web.config" />
     <Content Include="Areas\TournamentInfo\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\PlayerInfo\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\PlayerInfo\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\PlayerInfo\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\PlayerInfo\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\PlayerInfo\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\PlayerInformation\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\PlayerInformation\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\PlayerInformation\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\PlayerInformation\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\PlayerInformation\Index.cshtml" />
+    <Content Include="Areas\PlayerInfoStat\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -262,9 +262,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\PlayerInfo\Controllers\" />
-    <Folder Include="Areas\PlayerInfo\Models\" />
-    <Folder Include="Areas\PlayerInfo\Views\Shared\" />
+    <Folder Include="Areas\PlayerInfoStat\Controllers\" />
+    <Folder Include="Areas\PlayerInfoStat\Models\" />
+    <Folder Include="Areas\PlayerInfoStat\Views\Shared\" />
     <Folder Include="Areas\TournamentInfo\Controllers\" />
     <Folder Include="Areas\TournamentInfo\Models\" />
     <Folder Include="Areas\TournamentInfo\Views\Shared\" />
