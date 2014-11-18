@@ -19,6 +19,8 @@ namespace TableTennisChampionshipMain.ViewModels
         public string LastName { get; set; }
         [Display(Name = "Профилна снимка")]
         public string PhotoFile { get; set; }
+        [Display(Name="Файл за профилна снимка")]
+        public HttpPostedFileBase PostedFile { get; set; }
         [Display(Name = "Години")]
         public int? Age { get; set; }
     }

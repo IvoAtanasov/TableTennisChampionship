@@ -18,6 +18,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
     {
         private readonly IRepository<Player> player;
 
+        //Конструктор,който приема репозитори, подадено му от ninject
         public PlayerInformationController(IRepository<Player> player) {
             this.player = player;
         }
@@ -57,23 +58,32 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
+        public ActionResult Create([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PostedFile")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
         {
             if (ModelState.IsValid)
-            {
-                this.player.Add(new Player { 
-                PlayerID=player.PlayerID,
-                FirstName=player.FirstName,
-                LastName=player.LastName,
-                PhotoFile=player.PhotoFile,
-                Age=player.Age
-                });
-                this.player.SaveChanges();
-                var path =System.IO.Path.Combine(Server.MapPath("~/Content/Pictures/"),player.PhotoFile);
-                
+            {        
+                if (player.PostedFile.ContentLength > 0) 
+                {
+                    //Запазвам профилната снимкав папка Pictures
+                    var fileName = System.IO.Path.GetFileName(player.PostedFile.FileName);
+                    var path = System.IO.Path.Combine(Server.MapPath("~/Content/Pictures/"), fileName);
+                    player.PostedFile.SaveAs(path);
+                    //Връзвам Viewmodel към entitymodel
+                    Player entityPlayer = new Player
+                    {
+                        FirstName = player.FirstName,
+                        LastName = player.LastName,
+                        PhotoFile = fileName,
+                        Age = player.Age
+                    };
+                    //Добавям новото entity и записвам
+                    this.player.Add(entityPlayer);
+                    this.player.SaveChanges();
+                }
+                //Връщам към списъка
                 return RedirectToAction("Index");
             }
-            
+            //При грешка връщам обработения модел
             return View(player);
         }
 
@@ -84,12 +94,17 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            //if (player == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
+            var SelectedPlayer = this.player.All()
+                .Where(p => p.PlayerID == id)
+                .AsQueryable()
+                .Project()
+                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+
+            if (SelectedPlayer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(SelectedPlayer);
         }
 
         // POST: /Administration/PlayerInfo/Edit/5
@@ -97,12 +112,20 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="PlayerID,FirstName,LastName,PhotoFile,Age")] Player player)
+        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PhotoFile,PlayerID")] PlayerInfo player)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(player).State = EntityState.Modified;
-                //db.SaveChanges();
+                Player entityPlayer = new Player
+                {
+                    PlayerID=player.PlayerID,
+                    FirstName = player.FirstName,
+                    LastName = player.LastName,
+                    PhotoFile = System.IO.Path.GetFileName(player.PostedFile.FileName),
+                    Age = player.Age
+                };
+                this.player.Update(entityPlayer);
+                this.player.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(player);

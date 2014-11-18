@@ -13,15 +13,16 @@
 </p>
 <table class="table">
     <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PhotoFile)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhotoFile)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Age)
         </th>
@@ -30,15 +31,16 @@
 
 @foreach (var item in Model) {
     <tr>
+        @*<td>
+            <img src="~/Content/Pictures/@item.PhotoFile" />
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoFile)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Age)
         </td>
