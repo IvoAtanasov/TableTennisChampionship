@@ -38,12 +38,17 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //var currentPlayer = player.All().FirstOrDefault(id);
-            //if (player == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View();
+            var SelectedPlayer = this.player.All()
+                .Where(p => p.PlayerID == id)
+                .Project()
+                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>()
+                .FirstOrDefault();
+
+            if (SelectedPlayer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(SelectedPlayer);
         }
 
         // GET: /Administration/PlayerInfo/Create
