@@ -16,14 +16,15 @@
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.PlayerID)
+        @Html.HiddenFor(model => model.PhotoFile)
 
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.PhotoFile, new { @class = "control-label col-md-2" })*@
+            @Html.LabelFor(model => model.PhotoFile, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.PhotoFile)
                 @Html.ValidationMessageFor(model => model.PhotoFile)*@
-                <img src="~/Content/Pictures/@Model.PhotoFile" />
+                <img width="150" height="200" src="~/Content/Pictures/@Model.PhotoFile" />
             </div>
         </div>
 
@@ -61,7 +62,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад към списък", "Index")
 </div>
 
 @section Scripts {

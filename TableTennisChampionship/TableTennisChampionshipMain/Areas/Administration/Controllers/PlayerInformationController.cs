@@ -96,9 +96,9 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             }
             var SelectedPlayer = this.player.All()
                 .Where(p => p.PlayerID == id)
-                .AsQueryable()
                 .Project()
-                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>()
+                .FirstOrDefault();
 
             if (SelectedPlayer == null)
             {
@@ -112,7 +112,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PhotoFile,PlayerID")] PlayerInfo player)
+        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID")] PlayerInfo player)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                     PlayerID=player.PlayerID,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
-                    PhotoFile = System.IO.Path.GetFileName(player.PostedFile.FileName),
+                    PhotoFile = player.PhotoFile,
                     Age = player.Age
                 };
                 this.player.Update(entityPlayer);
