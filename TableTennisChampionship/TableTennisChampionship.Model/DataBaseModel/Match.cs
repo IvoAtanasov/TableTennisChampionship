@@ -14,6 +14,7 @@ namespace TableTennisChampionship.Model.DataBaseModel
         public int MatchID {get;set;}
         [Required]
         [Display(Name="Maч")]
+        [MaxLength(150)]
         public string MatchName { get; set; }
         public int PLayerWonPoints { get; set; }
         public int PlayerLostPoints { get; set; }

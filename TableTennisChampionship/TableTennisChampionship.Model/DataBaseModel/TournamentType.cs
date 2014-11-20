@@ -9,6 +9,7 @@ namespace TableTennisChampionship.Model.DataBaseModel
         [Key]
         public int TournamentTypeID { get; set; }
         [Display(Name="Вид на турнира")]
+        [MaxLength(150)]
         public string TournamentTypeName { get; set; }
 
 

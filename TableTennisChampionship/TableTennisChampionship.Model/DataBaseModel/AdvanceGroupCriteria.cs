@@ -12,6 +12,7 @@ namespace TableTennisChampionship.Model.DataBaseModel
         [Key]
         public int AdvanceGroupCriteriaID { get; set; }
         [Required]
+        [MaxLength(255)]
         public string AdvanceGroupCriteriaDescription { get; set; }
     }
 }

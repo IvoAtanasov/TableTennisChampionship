@@ -63,7 +63,7 @@ namespace TableTennisChampionshipMain.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<TableTennisDbContext>();
+            kernel.Bind<DbContext>().To<ApplicationDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
         }        
     }

@@ -19,7 +19,19 @@ namespace TableTennisChampionshipData
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
+        public virtual IDbSet<Tournament> Tournaments { get; set; }
+        public virtual IDbSet<TournamentType> TournamentTypes { get; set; }
+        public virtual IDbSet<Stage> Stages { get; set; }
+        public virtual IDbSet<Player> Players { get; set; }
+        public virtual IDbSet<MatchRule> MatchRules { get; set; }
+        public virtual IDbSet<Match> Matchs { get; set; }
+        public virtual IDbSet<Game> Games { get; set; }
+        public virtual IDbSet<AdvanceGroupCriteria> AdvanceGroupCriterias { get; set; }
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //}
        
     }
 }

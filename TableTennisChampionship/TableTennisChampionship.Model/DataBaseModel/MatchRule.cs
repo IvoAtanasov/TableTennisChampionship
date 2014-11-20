@@ -13,9 +13,11 @@ namespace TableTennisChampionship.Model.DataBaseModel
         public int PointsPerGame { get; set; }
         [Required(ErrorMessage="Въведете правило за 3 точки")]
         [Display(Name = "Резултат за 3 точки")]
+        [MaxLength(50)]
         public string ThreePoints { get; set; }
         [Required(ErrorMessage="Въведете правило за 2 точки")]
         [Display(Name = "Резултат за 2 точки")]
+        [MaxLength(50)]
         public string TwoPoints { get; set; }
         [Required(ErrorMessage="Въведете правило за 1 точки")]
         [Display(Name = "Резултат за 1 точки")]
