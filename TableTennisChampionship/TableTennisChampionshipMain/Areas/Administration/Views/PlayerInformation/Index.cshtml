@@ -13,9 +13,9 @@
 </p>
 <table class="table">
     <tr>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.PhotoFile)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -31,9 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            <img src="~/Content/Pictures/@item.PhotoFile" />
-        </td>*@
+        <td>
+            <img class="ProfilPicture" src="~/Content/Pictures/@item.PhotoFile" />
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>

@@ -14,6 +14,7 @@ using AutoMapper.QueryableExtensions;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PlayerInformationController : Controller
     {
         private readonly IRepository<Player> player;

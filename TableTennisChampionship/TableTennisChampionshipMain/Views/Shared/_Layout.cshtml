@@ -17,16 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if (ViewBag.UserName == "AdminTennis")
+                @*@if (ViewBag.UserName == "AdminTennis")
                 {
                 @Html.ActionLink("Администрация", "Index", "Home", null, new { @class = "navbar-brand" })
-                }
+                }*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Администрация", "Index", "PlayerInformation", new { area = "Administration" }, new { })</li>
+                    <li>@Html.ActionLink("Играчи и статистика", "About", "Home", new { area = "PlayerInfoStat" }, new { })</li>
+                    <li>@Html.ActionLink("Турнири", "Contact", "Home", new { area = "TournamenInfo" }, new { })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
