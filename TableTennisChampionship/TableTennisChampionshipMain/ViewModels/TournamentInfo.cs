@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using TableTennisChampionship.Model.DataBaseModel;
 
 
 namespace TableTennisChampionshipMain.ViewModels
@@ -18,6 +19,7 @@ namespace TableTennisChampionshipMain.ViewModels
         public  PlayerInfo FirstPlacePlayer { get; set; }
         public  PlayerInfo SecondPlacePlayer { get; set; }
         public PlayerInfo ThirdPlacePlayer { get; set; }
+        //public string TournamentType
         //[Required]    
         //public  TournamentType TournamentType { get; set; }
         //[Required] 
