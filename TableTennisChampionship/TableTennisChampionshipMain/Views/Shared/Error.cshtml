@@ -4,6 +4,14 @@
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+@{
+    var location = Request.Url.AbsoluteUri.ToString();
+    var exeptionMessage = Model.Exception.Message;
+    var stack = Model.Exception.StackTrace.ToString().Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).First();
+  
+}
 
+
+<h1 class="text-danger">Error at @location</h1>
+<h2 class="text-danger">Message: @exeptionMessage</h2>
+<h3>stack: @stack</h3>
