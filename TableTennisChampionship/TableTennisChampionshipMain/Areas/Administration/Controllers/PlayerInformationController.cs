@@ -1,44 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using TableTennisChampionshipData;
-using WorkingWithDataMvc.Data;
-using TableTennisChampionshipMain.ViewModels;
-using TableTennisChampionship.Model.DataBaseModel;
-using AutoMapper.QueryableExtensions;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure;
-
+﻿
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using TableTennisChampionshipData;
+    using WorkingWithDataMvc.Data;
+    using TableTennisChampionshipMain.ViewModels;
+    using TableTennisChampionship.Model.DataBaseModel;
+    using AutoMapper.QueryableExtensions;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure;
+
+    //[Authorize(Roles = "Admin")]
     public class PlayerInformationController : Controller
     {
         private readonly IRepository<Player> player;
-      // private CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-      //  // Create the blob client.
-      // private CloudBlobClient blobClient; //storageAccount.CreateCloudBlobClient();
-
-      //  // Retrieve a reference to a container. 
-      //private  CloudBlobContainer container ; ///blobClient.GetContainerReference("mycontainer");
+         ///blobClient.GetContainerReference("mycontainer");
 
         // Create the container if it doesn't already exist.
      //   container.CreateIfNotExists();
 
         //Конструктор,който приема репозитори, подадено му от ninject
         public PlayerInformationController(IRepository<Player> player) {
-            //this.player = player;
-            //this.blobClient = this.storageAccount.CreateCloudBlobClient();
-            //this.container = this.blobClient.GetContainerReference("ProfilePictures");
-            //container.CreateIfNotExists();
+            this.player = player;
+           
+
         }
         // GET: /Administration/PlayerInfo/
         public ActionResult Index()
@@ -89,20 +83,14 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                 {
                     //Запазвам профилната снимкав папка Pictures
                     var fileName = System.IO.Path.GetFileName(player.PostedFile.FileName);
-                    var path = System.IO.Path.Combine(Server.MapPath("~/Content/Pictures/"), fileName);
+                    #region CommetFileSaveOnContentFolder
+                    //var path = System.IO.Path.Combine(Server.MapPath("~/Content/Pictures/"), fileName);
                     //var path = System.IO.Path.Combine(Server.MapPath("~/"), fileName);
-                    player.PostedFile.SaveAs(path);
-                    //Връзвам Viewmodel към entitymodel
-
-                    //CloudBlockBlob blockBlob = this.container.GetBlockBlobReference(fileName);
-                    //System.IO.Stream pictureStream=System.IO.Stream.Null ;
-                    //player.PostedFile.InputStream.CopyTo(pictureStream);
-
-                    //using (pictureStream  )
-                    //{
-                    //    blockBlob.UploadFromStream(pictureStream );
-
-                    //}
+                    //player.PostedFile.SaveAs(path);
+                    #endregion
+                    //Запазвам файлът в AzureStorage
+                    AzureStorageHelper azureHelper = new AzureStorageHelper();
+                    azureHelper.CreateBlob(fileName, player.PostedFile);
                     Player entityPlayer = new Player
                     {
                         FirstName = player.FirstName,
