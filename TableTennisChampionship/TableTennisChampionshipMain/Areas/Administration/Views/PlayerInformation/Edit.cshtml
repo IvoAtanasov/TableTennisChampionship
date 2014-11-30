@@ -17,14 +17,14 @@
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.PlayerID)
         @Html.HiddenFor(model => model.PhotoFile)
-
+        @Html.HiddenFor(model => model.ImageUrl)
 
         <div class="form-group">
             @Html.LabelFor(model => model.PhotoFile, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.PhotoFile)
                 @Html.ValidationMessageFor(model => model.PhotoFile)*@
-                <img class="ProfilPicture" src="~/Content/Pictures/@Model.PhotoFile" />
+                <img class="ProfilPicture" src="@Model.ImageUrl" />
             </div>
         </div>
 

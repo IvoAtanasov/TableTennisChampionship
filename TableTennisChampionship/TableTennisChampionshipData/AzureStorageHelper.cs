@@ -25,8 +25,16 @@ namespace TableTennisChampionshipData
         {
             this.blobClient = this.storageAccount.CreateCloudBlobClient();
             this.container = this.blobClient.GetContainerReference("profilepictures");
-            this.container.CreateIfNotExists();
-
+            if ( this.container.CreateIfNotExists())
+            {
+                // Enable public access on the newly created "images" container
+                this.container.SetPermissions(
+                new BlobContainerPermissions
+                {
+                    PublicAccess =
+                        BlobContainerPublicAccessType.Blob
+                });
+            }
         }
 
         public  bool CreateBlob(string fileName,System.Web.HttpPostedFileBase postedFile) 
@@ -39,7 +47,7 @@ namespace TableTennisChampionshipData
                 postedFile.InputStream.CopyTo(target);
                 byte[] data = target.ToArray();
                 // blockBlob.UploadFromStream(target);
-                blockBlob.UploadFromByteArray(data, 0, data.Count<byte>(), null, null, null);
+                blockBlob.UploadFromByteArrayAsync(data, 0, data.Count<byte>(), null, null, null);
             }
             catch (Exception ex)
             {
@@ -52,7 +60,11 @@ namespace TableTennisChampionshipData
             }
             return isSuccess;
         }
-       
+        public string FullBlobUrl( string fileName )
+        {
+            CloudBlockBlob blockBlob = this.container.GetBlockBlobReference(fileName);
+            return  String.Format("http://{0}{1}", blockBlob.Uri.DnsSafeHost, blockBlob.Uri.AbsolutePath);
+        }
         
     }
 }

@@ -96,7 +96,8 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                         FirstName = player.FirstName,
                         LastName = player.LastName,
                         PhotoFile = fileName,
-                        Age = player.Age
+                        Age = player.Age,
+                        ImageUrl=azureHelper.FullBlobUrl(fileName)
                     };
                     //Добавям новото entity и записвам
                     this.player.Add(entityPlayer);
@@ -134,7 +135,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID")] PlayerInfo player)
+        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID,ImageUrl")] PlayerInfo player)
         {
             if (ModelState.IsValid)
             {
@@ -144,7 +145,8 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                     FirstName = player.FirstName,
                     LastName = player.LastName,
                     PhotoFile = player.PhotoFile,
-                    Age = player.Age
+                    Age = player.Age,
+                    ImageUrl=player.ImageUrl
                 };
                 this.player.Update(entityPlayer);
                 this.player.SaveChanges();
