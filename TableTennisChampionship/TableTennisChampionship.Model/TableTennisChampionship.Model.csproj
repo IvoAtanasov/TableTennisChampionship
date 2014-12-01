@@ -53,6 +53,7 @@
     <Compile Include="DataBaseModel\Player.cs" />
     <Compile Include="DataBaseModel\Stage.cs" />
     <Compile Include="DataBaseModel\Tournament.cs" />
+    <Compile Include="DataBaseModel\TournamentPlayer.cs" />
     <Compile Include="DataBaseModel\TournamentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

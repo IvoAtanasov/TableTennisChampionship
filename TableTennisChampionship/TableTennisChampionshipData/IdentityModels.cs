@@ -27,6 +27,7 @@ namespace TableTennisChampionshipData
         public virtual IDbSet<Match> Matchs { get; set; }
         public virtual IDbSet<Game> Games { get; set; }
         public virtual IDbSet<AdvanceGroupCriteria> AdvanceGroupCriterias { get; set; }
+        public virtual IDbSet<TournamentPlayer> TournamentPlayer { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
