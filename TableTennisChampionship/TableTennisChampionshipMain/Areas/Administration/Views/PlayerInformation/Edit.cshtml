@@ -27,7 +27,14 @@
                 <img class="ProfilPicture" src="@Model.ImageUrl" />
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostedFile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.PhotoFile)
+                @Html.ValidationMessageFor(model => model.PhotoFile)*@
+               @Html.TextBoxFor(model => model.PostedFile, new { type = "file" }) 
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">

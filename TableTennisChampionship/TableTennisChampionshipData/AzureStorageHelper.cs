@@ -12,6 +12,9 @@ namespace TableTennisChampionshipData
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
+    /// <summary>
+    /// Създава storage account, blob client и profilepicture container.
+    /// </summary>
     public  class AzureStorageHelper
     {
         private  CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("tennisprofilepictures"));
@@ -36,7 +39,12 @@ namespace TableTennisChampionshipData
                 });
             }
         }
-
+        /// <summary>
+        /// Създава blob, като копира файл в MemoryStream и се подава като байт масив на Upload метода.
+        /// </summary>
+        /// <param name="fileName">име на файла, което автоматично се сетва на име на блоба</param>
+        /// <param name="postedFile">Файлът като тип HttpPostedFileBase</param>
+        /// <returns>Дали е успечно качванто</returns>
         public  bool CreateBlob(string fileName,System.Web.HttpPostedFileBase postedFile) 
         {
             bool isSuccess=true;
@@ -60,10 +68,30 @@ namespace TableTennisChampionshipData
             }
             return isSuccess;
         }
+        /// <summary>
+        /// Връща пълния Url на блоб с дадено име
+        /// </summary>
+        /// <param name="fileName">Име на блоба</param>
+        /// <returns>String - URL</returns>
         public string FullBlobUrl( string fileName )
         {
             CloudBlockBlob blockBlob = this.container.GetBlockBlobReference(fileName);
             return  String.Format("http://{0}{1}", blockBlob.Uri.DnsSafeHost, blockBlob.Uri.AbsolutePath);
+        }
+
+        public bool DeleteBlob(string fileName)
+        { 
+            bool isSuccess=true;
+            try
+            {
+                CloudBlockBlob blockBlob = this.container.GetBlockBlobReference(fileName);
+                blockBlob.Delete();
+            }
+            catch(Exception ex)
+            { 
+                
+            }
+           return isSuccess;
         }
         
     }

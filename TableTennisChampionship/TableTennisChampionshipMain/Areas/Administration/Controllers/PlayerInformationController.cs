@@ -137,14 +137,24 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID,ImageUrl")] PlayerInfo player)
         {
+
             if (ModelState.IsValid)
             {
+                if (player.PostedFile.ContentLength > 0)
+                {
+                    var fileName = System.IO.Path.GetFileName(player.PostedFile.FileName);
+                    AzureStorageHelper azureHelper = new AzureStorageHelper();
+                    azureHelper.CreateBlob(fileName, player.PostedFile);
+                    player.ImageUrl = azureHelper.FullBlobUrl(fileName);
+
+                }
+
                 Player entityPlayer = new Player
                 {
                     PlayerID=player.PlayerID,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
-                    PhotoFile = player.PhotoFile,
+                    //PhotoFile = player.PhotoFile,
                     Age = player.Age,
                     ImageUrl=player.ImageUrl
                 };
