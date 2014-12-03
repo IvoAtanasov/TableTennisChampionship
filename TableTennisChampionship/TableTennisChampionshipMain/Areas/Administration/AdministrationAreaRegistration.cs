@@ -19,6 +19,7 @@ namespace TableTennisChampionshipMain.Areas.Administration
                 "Administration/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
-     //[Authorize(Roles = "Admin")]
+     [Authorize(Roles = "Admin")]
     public class MainController : Controller
     {
         // GET: Administration/Main

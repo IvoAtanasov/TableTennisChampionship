@@ -25,6 +25,7 @@ namespace TableTennisChampionshipMain.Controllers
         public ActionResult Index()
         {
             //var matches = this.matches.All();
+            ViewBag.UserName = this.CurrentUserName;
 
             return this.View();
           

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<TableTennisChampionshipMain.ViewModels.PlayerInfo>
+<select>
+
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.PlayerID">@item.FirstName +" "+ @item.LastName</option>
+    }
+
+</select>
+
+

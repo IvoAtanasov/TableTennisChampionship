@@ -8,14 +8,18 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using TableTennisChampionship.Model.DataBaseModel;
 using TableTennisChampionshipData;
 using TableTennisChampionshipMain.ViewModels;
+using WorkingWithDataMvc.Data;
+using AutoMapper.QueryableExtensions;
 
 namespace TableTennisChampionshipMain.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IRepository<Player> player;
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {

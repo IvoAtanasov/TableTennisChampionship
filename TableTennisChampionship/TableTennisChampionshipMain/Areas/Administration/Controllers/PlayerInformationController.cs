@@ -19,15 +19,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure;
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class PlayerInformationController : Controller
     {
         private readonly IRepository<Player> player;
-         ///blobClient.GetContainerReference("mycontainer");
-
-        // Create the container if it doesn't already exist.
-     //   container.CreateIfNotExists();
-
         //Конструктор,който приема репозитори, подадено му от ninject
         public PlayerInformationController(IRepository<Player> player) {
             this.player = player;
