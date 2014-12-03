@@ -127,6 +127,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
+            //else
+            //{
+             
+            //}
             return View(SelectedPlayer);
         }
 
@@ -135,17 +139,22 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID,ImageUrl")] PlayerInfo player)
+        public ActionResult Edit([Bind(Include = "PlayerID,FirstName,LastName,PhotoFile,Age,PlayerID,ImageUrl,PostedFile")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
         {
 
             if (ModelState.IsValid)
             {
-                if (player.PostedFile.ContentLength > 0)
+                if (player.PostedFile != null && player.PostedFile.ContentLength > 0)
                 {
                     var fileName = System.IO.Path.GetFileName(player.PostedFile.FileName);
                     AzureStorageHelper azureHelper = new AzureStorageHelper();
+                    //създава се нов блоб възоснова на поснатия файл
                     azureHelper.CreateBlob(fileName, player.PostedFile);
+                    // изтрива се предишния, неговото име се държи във viewmodel
+                    azureHelper.DeleteBlob(player.PhotoFile);
+                    // сетват се нови стойности на полета от viewmodel
                     player.ImageUrl = azureHelper.FullBlobUrl(fileName);
+                    player.PhotoFile = fileName;
 
                 }
 
@@ -154,7 +163,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                     PlayerID=player.PlayerID,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
-                    //PhotoFile = player.PhotoFile,
+                    PhotoFile =player.PhotoFile,
                     Age = player.Age,
                     ImageUrl=player.ImageUrl
                 };

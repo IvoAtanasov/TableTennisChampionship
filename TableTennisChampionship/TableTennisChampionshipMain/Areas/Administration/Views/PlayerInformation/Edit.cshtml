@@ -1,13 +1,13 @@
 ﻿@model TableTennisChampionshipMain.ViewModels.PlayerInfo
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редакция";
 }
 
-<h2>Edit</h2>
+<h2>Редакция на играч</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -30,11 +30,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PostedFile, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.PhotoFile)
-                @Html.ValidationMessageFor(model => model.PhotoFile)*@
-               @Html.TextBoxFor(model => model.PostedFile, new { type = "file" }) 
+                @Html.TextBoxFor(model => model.PostedFile, new { type = "file" })
             </div>
-        </div>
+        </div>>
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
