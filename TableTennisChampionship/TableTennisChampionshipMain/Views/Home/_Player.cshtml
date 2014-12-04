@@ -1,0 +1,24 @@
+﻿@model TableTennisChampionshipMain.ViewModels.PlayerInfo
+
+<div>
+    @if (ViewBag.UserID==null)
+    { 
+        <span>
+            @Html.RadioButton("rbtSelectPlayer",Model.PlayerID,false)
+        </span>
+    }
+       
+        <span>
+            @Html.DisplayFor(model => model.FirstName)
+        </span>
+        <span>
+            @Html.DisplayFor(model => model.LastName)
+        </span>
+    <span>
+        <img class="ProfilPicture" src="@Model.ImageUrl" />
+    </span>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

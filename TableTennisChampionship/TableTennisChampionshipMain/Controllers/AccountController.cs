@@ -19,7 +19,7 @@ namespace TableTennisChampionshipMain.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly IRepository<Player> player;
+        //private readonly IRepository<Player> player;
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -88,7 +88,7 @@ namespace TableTennisChampionshipMain.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RegisterPlayer", "Home");
                 }
                 else
                 {
@@ -377,7 +377,7 @@ namespace TableTennisChampionshipMain.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("RegisterPlayer", "Home");
             }
         }
 

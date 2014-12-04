@@ -286,6 +286,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SelectPlayer.cshtml" />
+    <Content Include="Views\Home\RegisterPlayer.cshtml" />
+    <Content Include="Views\Home\_Player.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

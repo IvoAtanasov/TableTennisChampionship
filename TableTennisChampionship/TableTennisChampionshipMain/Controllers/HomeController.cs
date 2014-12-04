@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TableTennisChampionship.Model.DataBaseModel;
-using WorkingWithDataMvc.Data;
-
-namespace TableTennisChampionshipMain.Controllers
+﻿namespace TableTennisChampionshipMain.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using TableTennisChampionship.Model.DataBaseModel;
+    using WorkingWithDataMvc.Data;
+    using AutoMapper.QueryableExtensions;
+
     public class HomeController : BaseController
     {
-        private readonly IRepository<Match> matches;
+        private readonly IRepository<Player> player;
 
-        public HomeController(IRepository<Match> matches)
-        {
-            this.matches = matches;
+       
+        public HomeController(IRepository<Player> player) {
+            this.player = player;
         }
-
         public HomeController()
-        {
-
+        { 
+        
         }
 
         public ActionResult Index()
@@ -42,6 +42,22 @@ namespace TableTennisChampionshipMain.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        [HttpGet]
+        public ActionResult RegisterPlayer()
+        {
+            var playerList = player.All()
+            .Project()
+            .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+            return View(playerList);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterPlayer(TableTennisChampionshipMain.ViewModels.PlayerInfo player)
+        {
+           
             return View();
         }
     }

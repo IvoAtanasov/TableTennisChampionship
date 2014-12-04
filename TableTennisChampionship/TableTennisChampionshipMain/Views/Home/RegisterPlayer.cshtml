@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TableTennisChampionshipMain.ViewModels.PlayerInfo>
+
+@{
+    ViewBag.Title = "RegisterPlayer";
+}
+
+@if (ViewBag.UserID == null)
+{
+    <h2>Изберете играч</h2>
+}
+else 
+{ 
+    <h2>Ваш играч</h2>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    foreach (var item in Model) 
+    {
+        Html.RenderPartial("_Player", item);
+    }
+    <input type="submit" id="btnSubmit" value="Избери" />
+}
+

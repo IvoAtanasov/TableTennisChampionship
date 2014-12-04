@@ -6,12 +6,14 @@ using System.Web.Mvc;
 using TableTennisChampionshipData;
 using TableTennisChampionshipMain.ViewModels;
 using Microsoft.AspNet.Identity;
+using WorkingWithDataMvc.Data;
 
 
 namespace TableTennisChampionshipMain.Controllers
 {
     public abstract class BaseController : Controller
     {
+        private readonly IRepository<ApplicationUser> user;
         public BaseController() 
         {
             //ViewBag.UserName = CurrentUserName;
@@ -36,6 +38,14 @@ namespace TableTennisChampionshipMain.Controllers
             }
 
         }
+
+        //protected int CurrentUserPlayer
+        //{
+        //    //get 
+        //    //{ 
+               
+        //    //}
+        //}
 
 	}
 }
