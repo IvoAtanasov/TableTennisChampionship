@@ -64,6 +64,6 @@ namespace TableTennisChampionshipMain.ViewModels
         [Compare("Password", ErrorMessage = "Не съвпада паролата")]
         public string ConfirmPassword { get; set; }
 
-        //public List<PlayerInfo> Players { get; set; }
+        public List<PlayerInfo> Players { get; set; }
     }
 }

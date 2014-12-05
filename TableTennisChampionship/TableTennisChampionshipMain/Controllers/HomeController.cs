@@ -8,14 +8,20 @@
     using TableTennisChampionship.Model.DataBaseModel;
     using WorkingWithDataMvc.Data;
     using AutoMapper.QueryableExtensions;
-
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using TableTennisChampionshipData;
+    using Microsoft.AspNet.Identity;
     public class HomeController : BaseController
     {
         private readonly IRepository<Player> player;
+        private readonly IRepository<ApplicationUser> _user;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-       
-        public HomeController(IRepository<Player> player) {
+
+        public HomeController(IRepository<Player> player, IRepository<ApplicationUser> user)
+        {
             this.player = player;
+            this._user = user;
         }
         public HomeController()
         { 
@@ -55,9 +61,17 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterPlayer(TableTennisChampionshipMain.ViewModels.PlayerInfo player)
+        public ActionResult RegisterPlayer([Bind(Include = "PlayerID")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
         {
-           
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+            Player entityPlayer = new Player
+                    {
+                        PlayerID=player.PlayerID
+                    };
+              currentUser.Player = entityPlayer;
+              _user.Update(currentUser);
+              _user.SaveChanges();
             return View();
         }
     }

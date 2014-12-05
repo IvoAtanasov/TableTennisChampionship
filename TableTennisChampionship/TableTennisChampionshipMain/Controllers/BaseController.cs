@@ -38,14 +38,6 @@ namespace TableTennisChampionshipMain.Controllers
             }
 
         }
-
-        //protected int CurrentUserPlayer
-        //{
-        //    //get 
-        //    //{ 
-               
-        //    //}
-        //}
-
+        
 	}
 }

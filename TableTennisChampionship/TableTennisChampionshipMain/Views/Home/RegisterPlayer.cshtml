@@ -12,14 +12,18 @@ else
 { 
     <h2>Ваш играч</h2>
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, new { area=""}, FormMethod.Post,
+                        null))
 {
     @Html.AntiForgeryToken()
-    
-    foreach (var item in Model) 
-    {
-        Html.RenderPartial("_Player", item);
-    }
+ 
+        foreach (var item in Model)
+        {
+
+            Html.RenderPartial("_Player", item);
+
+        }
+   
     <input type="submit" id="btnSubmit" value="Избери" />
 }
 
