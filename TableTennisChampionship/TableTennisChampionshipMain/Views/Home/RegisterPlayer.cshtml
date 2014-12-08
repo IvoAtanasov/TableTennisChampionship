@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TableTennisChampionshipMain.ViewModels.PlayerInfo>
+﻿@model TableTennisChampionshipMain.ViewModels.SelectedPlayerInfo
 
 @{
     ViewBag.Title = "RegisterPlayer";
@@ -12,18 +12,23 @@ else
 { 
     <h2>Ваш играч</h2>
 }
-@using (Html.BeginForm(null, null, new { area=""}, FormMethod.Post,
+@using (Html.BeginForm(null, null, new { area = "" }, FormMethod.Post,
                         null))
 {
-    @Html.AntiForgeryToken()
- 
-        foreach (var item in Model)
-        {
+    Html.AntiForgeryToken();
+    foreach (var item in Model.PlayerList)
+    {
+        <div>
+            @if (ViewBag.UserID == null)
+            {
+                <span>
+                    @Html.RadioButtonFor(modelItem => modelItem.SelectedPlayerID, item.PlayerID)
+                </span>
+            }
+            @{Html.RenderPartial("_Player", item);}
+        </div>
+    }
 
-            Html.RenderPartial("_Player", item);
-
-        }
-   
     <input type="submit" id="btnSubmit" value="Избери" />
 }
 

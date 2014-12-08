@@ -221,6 +221,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PlayerInfo.cs" />
+    <Compile Include="ViewModels\SelectedPlayerInfo.cs" />
     <Compile Include="ViewModels\TournamentInfo.cs" />
   </ItemGroup>
   <ItemGroup>

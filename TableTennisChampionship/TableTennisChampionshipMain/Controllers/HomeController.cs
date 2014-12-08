@@ -11,13 +11,12 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using TableTennisChampionshipData;
     using Microsoft.AspNet.Identity;
+    using ViewModels;
     public class HomeController : BaseController
     {
         private readonly IRepository<Player> player;
         private readonly IRepository<ApplicationUser> _user;
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-
+    //    private ApplicationDbContext db = new ApplicationDbContext();
         public HomeController(IRepository<Player> player, IRepository<ApplicationUser> user)
         {
             this.player = player;
@@ -56,22 +55,27 @@
             var playerList = player.All()
             .Project()
             .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
-            return View(playerList);
+            SelectedPlayerInfo spi = new SelectedPlayerInfo
+            {
+                PlayerList=playerList
+            };
+            return View(spi);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RegisterPlayer([Bind(Include = "PlayerID")] TableTennisChampionshipMain.ViewModels.PlayerInfo player)
+        //[ValidateAntiForgeryToken]
+        public ActionResult RegisterPlayer(TableTennisChampionshipMain.ViewModels.SelectedPlayerInfo spi)
         {
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
-            Player entityPlayer = new Player
-                    {
-                        PlayerID=player.PlayerID
-                    };
-              currentUser.Player = entityPlayer;
-              _user.Update(currentUser);
-              _user.SaveChanges();
+            //string currentUserId = User.Identity.GetUserId();
+            //ApplicationUser currentUser = this._user.All().FirstOrDefault(x => x.Id == currentUserId);//db.Users.FirstOrDefault(x => x.Id == currentUserId);
+            //var entityPlayer = player.All()
+            //    .Where(p => p.PlayerID == spi.SelectedPlayerID)
+            //    .FirstOrDefault();
+            //    //.Project()
+            //    //.To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+            //  currentUser.Player = entityPlayer;
+            //  _user.Update(currentUser);
+            //  _user.SaveChanges();
             return View();
         }
     }
