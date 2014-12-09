@@ -16,15 +16,15 @@
     {
         private readonly IRepository<Player> player;
         private readonly IRepository<ApplicationUser> _user;
-    //    private ApplicationDbContext db = new ApplicationDbContext();
+        //    private ApplicationDbContext db = new ApplicationDbContext();
         public HomeController(IRepository<Player> player, IRepository<ApplicationUser> user)
         {
             this.player = player;
             this._user = user;
         }
         public HomeController()
-        { 
-        
+        {
+
         }
 
         public ActionResult Index()
@@ -33,7 +33,7 @@
             ViewBag.UserName = this.CurrentUserName;
 
             return this.View();
-          
+
         }
 
         public ActionResult About()
@@ -52,13 +52,29 @@
         [HttpGet]
         public ActionResult RegisterPlayer()
         {
-            var playerList = player.All()
-            .Project()
-            .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+            IEnumerable<PlayerInfo> playerList = null;
+            int? selectedPlayerID = null;
+            if (User != null && User.Identity != null)
+            {
+                string currentUserId = User.Identity.GetUserId();
+                selectedPlayerID = this._user.All().FirstOrDefault(x => x.Id == currentUserId).PlayerID;//селектирам играча за текущия потребител  
+                playerList = player.All()
+                .Where(x => x.PlayerID == selectedPlayerID)
+               .Project()
+               .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+            }
+            else
+            {
+                playerList = player.All()
+                .Project()
+                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+            }
             SelectedPlayerInfo spi = new SelectedPlayerInfo
             {
-                PlayerList=playerList
+                PlayerList = playerList,
+                SelectedPlayerID = selectedPlayerID
             };
+
             return View(spi);
         }
 
@@ -66,17 +82,27 @@
         //[ValidateAntiForgeryToken]
         public ActionResult RegisterPlayer(TableTennisChampionshipMain.ViewModels.SelectedPlayerInfo spi)
         {
-            //string currentUserId = User.Identity.GetUserId();
-            //ApplicationUser currentUser = this._user.All().FirstOrDefault(x => x.Id == currentUserId);//db.Users.FirstOrDefault(x => x.Id == currentUserId);
-            //var entityPlayer = player.All()
-            //    .Where(p => p.PlayerID == spi.SelectedPlayerID)
-            //    .FirstOrDefault();
-            //    //.Project()
-            //    //.To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
-            //  currentUser.Player = entityPlayer;
-            //  _user.Update(currentUser);
-            //  _user.SaveChanges();
-            return View();
+            int? selectPlayerId = spi.SelectedPlayerID;
+            PlayerInfo playerInfo = null;
+            try
+            {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = this._user.All().FirstOrDefault(x => x.Id == currentUserId);
+                currentUser.PlayerID = spi.SelectedPlayerID;
+                _user.Update(currentUser);
+                _user.SaveChanges();
+                playerInfo = player.All()
+                    .Where(p => p.PlayerID == selectPlayerId)
+                    .Project()
+                    .To<PlayerInfo>()
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            spi.PlayerList = new List<PlayerInfo>() { playerInfo };
+            return View(spi);
         }
     }
 }

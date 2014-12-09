@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     public class SelectedPlayerInfo
     {
-        public int SelectedPlayerID { get; set; }
+        public int? SelectedPlayerID { get; set; }
         public IEnumerable<PlayerInfo> PlayerList { get; set; }
 
         public SelectedPlayerInfo()

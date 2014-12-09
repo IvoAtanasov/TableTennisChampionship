@@ -4,7 +4,7 @@
     ViewBag.Title = "RegisterPlayer";
 }
 
-@if (ViewBag.UserID == null)
+@if (Model.SelectedPlayerID == null)
 {
     <h2>Изберете играч</h2>
 }
@@ -19,7 +19,7 @@ else
     foreach (var item in Model.PlayerList)
     {
         <div>
-            @if (ViewBag.UserID == null)
+            @if (Model.SelectedPlayerID == null)
             {
                 <span>
                     @Html.RadioButtonFor(modelItem => modelItem.SelectedPlayerID, item.PlayerID)
@@ -29,6 +29,9 @@ else
         </div>
     }
 
-    <input type="submit" id="btnSubmit" value="Избери" />
+    if (Model.SelectedPlayerID == null)
+    {   
+        <input type="submit" id="btnSubmit" value="Избери" />
+    }
 }
 
