@@ -8,6 +8,7 @@
     {
         [Key]
         public int TournamentID { get; set; }
+        public string TournamentName { get; set; }
         [Required(ErrorMessage = "Не сте задали начална дата на турнира")]
         public DateTime StartDate { get; set; }  
         public DateTime EndDate { get; set; }

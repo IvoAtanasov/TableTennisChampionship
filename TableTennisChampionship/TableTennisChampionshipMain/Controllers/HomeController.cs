@@ -79,7 +79,7 @@
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult RegisterPlayer(TableTennisChampionshipMain.ViewModels.SelectedPlayerInfo spi)
         {
             int? selectPlayerId = spi.SelectedPlayerID;

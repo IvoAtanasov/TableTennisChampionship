@@ -21,7 +21,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         // GET: Administration/Tournament
         public ActionResult Index()
         {
-           // var selectedTournament = this.tournament.All().Include(x => x.TournamentType).Include(x => x.FirstPlacePlayer);
+            var selectedTournament = this.tournament.All()
+                .Include(x => x.TournamentType)
+                .Include(x => x.AdvanceGroupCriteria)
+                .Include("TournamentPlayers");
 
             //selectedTournament.First().FirstPlacePlayer.
             return View();
