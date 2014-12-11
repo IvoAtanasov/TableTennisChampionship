@@ -248,6 +248,8 @@
     <Content Include="Areas\Administration\Views\PlayerInformation\Index.cshtml" />
     <Content Include="Areas\PlayerInfoStat\Views\web.config" />
     <Content Include="Areas\Administration\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Tournament\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Tournament\Create.cshtml" />
     <None Include="Properties\PublishProfiles\TableTennisChampionNSI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -294,7 +296,6 @@
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Tournament\" />
     <Folder Include="Areas\PlayerInfoStat\Controllers\" />
     <Folder Include="Areas\PlayerInfoStat\Models\" />
     <Folder Include="Areas\PlayerInfoStat\Views\Shared\" />

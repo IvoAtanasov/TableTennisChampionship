@@ -11,6 +11,7 @@ namespace TableTennisChampionshipMain.ViewModels
 {
     public class TournamentInfo : IMapFrom<Tournament>, IHaveCustomMappings
     {
+        public int TournamentID { get; set; }
         [Required(ErrorMessage="Не сте задали наименование на турнира")]
         [Display(Name="Наименование на турнир")]
         public string TournamentName { get; set; }
@@ -27,6 +28,8 @@ namespace TableTennisChampionshipMain.ViewModels
         public int TournamentTypeID { get; set; }
         [Required]
         public int AdvanceGroupCriteriaID { get; set; }
+        [Display(Name="Победител")]
+        public string WinnerFullName { get; set; }
 
         #region IHaveCustomMappings Members
 
@@ -42,6 +45,11 @@ namespace TableTennisChampionshipMain.ViewModels
                 .ForMember(m => m.TournamentTypeDesc, opt => opt.MapFrom(b => b.TournamentType.TournamentTypeName));
             configuration.CreateMap<Tournament, TournamentInfo>()
                 .ForMember(m => m.TournamentTypeID, opt => opt.MapFrom(b => b.TournamentType.TournamentTypeID ));
+
+            configuration.CreateMap<Tournament, TournamentInfo>()
+               .ForMember(m => m.WinnerFullName, opt => opt.MapFrom(b => b.PlayerList.Where(x => x.Rank == 1).Select(p => p.Player.FirstName +" "+ p.Player.LastName).FirstOrDefault()));
+
+
         }
 
         #endregion

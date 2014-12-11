@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TableTennisChampionshipMain.ViewModels.TournamentInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Създай нов турнир", "Create")<a href="@Url.Action("Create","Tournament")">
+        <img src="~/Content/image/add.png" />
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TournamentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TournamentTypeDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvanceGroupDesc)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TournamentTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvanceGroupCriteriaID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.WinnerFullName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TournamentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TournamentTypeDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvanceGroupDesc)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TournamentTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvanceGroupCriteriaID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.WinnerFullName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id=item.TournamentID /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new {id=item.TournamentID /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
