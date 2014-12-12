@@ -15,9 +15,10 @@ else
 @using (Html.BeginForm(null, null, new { area = "" }, FormMethod.Post,
                         null))
 {
-    Html.AntiForgeryToken();
+    @Html.AntiForgeryToken();
     foreach (var item in Model.PlayerList)
     {
+       
         <div>
             @if (Model.SelectedPlayerID == null)
             {

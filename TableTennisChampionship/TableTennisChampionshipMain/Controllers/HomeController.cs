@@ -56,18 +56,27 @@
             int? selectedPlayerID = null;
             if (User != null && User.Identity != null)
             {
+
                 string currentUserId = User.Identity.GetUserId();
                 selectedPlayerID = this._user.All().FirstOrDefault(x => x.Id == currentUserId).PlayerID;//селектирам играча за текущия потребител  
-                playerList = player.All()
-                .Where(x => x.PlayerID == selectedPlayerID)
-               .Project()
-               .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+                if (selectedPlayerID != null)
+                {
+                    playerList = player.All()
+                    .Where(x => x.PlayerID == selectedPlayerID)
+                   .Project()
+                   .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+                }
+                else
+                {
+                    playerList = player.All()
+                    .Project()
+                    .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+                }
+
             }
             else
             {
-                playerList = player.All()
-                .Project()
-                .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
+                throw new Exception();
             }
             SelectedPlayerInfo spi = new SelectedPlayerInfo
             {
