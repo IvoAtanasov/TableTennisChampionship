@@ -16,6 +16,7 @@ namespace TableTennisChampionshipMain.ViewModels
         [Display(Name="Наименование на турнир")]
         public string TournamentName { get; set; }
         [Required(ErrorMessage = "Не сте задали начална дата на турнира")]
+
         [Display(Name = "Начална дата")]
         public DateTime StartDate { get; set; }
         [Display(Name = "Крайна дата")]

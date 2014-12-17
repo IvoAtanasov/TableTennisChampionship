@@ -36,11 +36,12 @@
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EndDate)
+               
                 @Html.ValidationMessageFor(model => model.EndDate)
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.TournamentTypeDesc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TournamentTypeDesc)
@@ -54,12 +55,12 @@
                 @Html.EditorFor(model => model.AdvanceGroupDesc)
                 @Html.ValidationMessageFor(model => model.AdvanceGroupDesc)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.TournamentTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TournamentTypeID)
+                @Html.DropDownListFor(model => model.TournamentTypeID, (SelectList)ViewBag.TournamentType)
                 @Html.ValidationMessageFor(model => model.TournamentTypeID)
             </div>
         </div>
@@ -67,18 +68,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AdvanceGroupCriteriaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AdvanceGroupCriteriaID)
+                @Html.DropDownListFor(model => model.AdvanceGroupCriteriaID, (SelectList)ViewBag.AdvanceCriteria)
                 @Html.ValidationMessageFor(model => model.AdvanceGroupCriteriaID)
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.WinnerFullName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.WinnerFullName)
                 @Html.ValidationMessageFor(model => model.WinnerFullName)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
