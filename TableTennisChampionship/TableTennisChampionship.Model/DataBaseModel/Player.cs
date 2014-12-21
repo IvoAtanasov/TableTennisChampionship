@@ -6,6 +6,10 @@ namespace TableTennisChampionship.Model.DataBaseModel
 {
     public class Player
     {
+        public Player()
+        {
+            this.IsMapped = false;
+        }
         [Key]
         public int PlayerID { get; set; }
         [Required(ErrorMessage="Името задължително поле")]
@@ -23,5 +27,6 @@ namespace TableTennisChampionship.Model.DataBaseModel
         [Display(Name="Години")]
         public int? Age { get; set; }
         public string ImageUrl { get; set; }
+        public bool IsMapped { get; set; }
     }
 }

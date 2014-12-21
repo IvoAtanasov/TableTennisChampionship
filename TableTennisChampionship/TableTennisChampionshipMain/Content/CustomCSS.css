@@ -13,4 +13,8 @@ width:100%;
 margin-left: auto ;
 margin-right: auto ;
 }
+.FixSpan {
+	float: left;
+    width: 200px;
+}
 

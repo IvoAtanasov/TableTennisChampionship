@@ -231,6 +231,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomCSS.css" />
     <Content Include="Content\image\add.png" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -252,9 +255,11 @@
     <Content Include="Areas\Administration\Views\Tournament\Create.cshtml" />
     <None Include="Properties\PublishProfiles\TableTennisChampionNSI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -291,6 +296,8 @@
     <Content Include="Views\Shared\_SelectPlayer.cshtml" />
     <Content Include="Views\Home\RegisterPlayer.cshtml" />
     <Content Include="Views\Home\_Player.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

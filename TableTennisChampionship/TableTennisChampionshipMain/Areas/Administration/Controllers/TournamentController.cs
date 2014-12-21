@@ -55,10 +55,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                     _entityTour = new Tournament
                     {
                         TournamentName=trmt.TournamentName,
-                        AdvanceGroupCriteria = _AdvanceGroupCriteria.All().FirstOrDefault(x=>x.AdvanceGroupCriteriaID==trmt.AdvanceGroupCriteriaID),
-                        TournamentType=_TournamenType.All().FirstOrDefault(x=>x.TournamentTypeID==trmt.TournamentTypeID),
-                        StartDate=trmt.StartDate,
-                        EndDate=trmt.EndDate
+                        AdvanceGroupCriteriaID=trmt.AdvanceGroupCriteriaID,
+                        TournamentTypeID=trmt.TournamentTypeID,
+                        StartDate=(DateTime)trmt.StartDate,
+                        EndDate=(DateTime)trmt.EndDate
                     };
                     this.tournament.Add(_entityTour);
                     this.tournament.SaveChanges();

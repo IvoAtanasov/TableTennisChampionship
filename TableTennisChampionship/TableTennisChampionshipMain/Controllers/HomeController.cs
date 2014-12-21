@@ -69,6 +69,7 @@
                 else
                 {
                     playerList = player.All()
+                    .Where(x=>x.IsMapped==false)
                     .Project()
                     .To<TableTennisChampionshipMain.ViewModels.PlayerInfo>();
                 }
@@ -93,6 +94,7 @@
         {
             int? selectPlayerId = spi.SelectedPlayerID;
             PlayerInfo playerInfo = null;
+            Player entityPlayer = null;
             try
             {
                 string currentUserId = User.Identity.GetUserId();
@@ -100,6 +102,8 @@
                 currentUser.PlayerID = spi.SelectedPlayerID;
                 _user.Update(currentUser);
                 _user.SaveChanges();
+                entityPlayer = player.All()
+                    .Where(p => p.PlayerID == selectPlayerId).FirstOrDefault();
                 playerInfo = player.All()
                     .Where(p => p.PlayerID == selectPlayerId)
                     .Project()
@@ -111,6 +115,9 @@
 
             }
             spi.PlayerList = new List<PlayerInfo>() { playerInfo };
+            entityPlayer.IsMapped = true;
+            player.Update(entityPlayer);
+            player.SaveChanges();
             return View(spi);
         }
     }

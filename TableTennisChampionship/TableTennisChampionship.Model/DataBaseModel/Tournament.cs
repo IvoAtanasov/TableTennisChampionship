@@ -13,9 +13,12 @@
         [Required(ErrorMessage = "Не сте задали начална дата на турнира")]
         public DateTime StartDate { get; set; }  
         public DateTime EndDate { get; set; }
-        [Required]
+     
+        public int TournamentTypeID  { get; set; }
+        [ForeignKey("TournamentTypeID")]
         public virtual TournamentType TournamentType { get; set; }
-        [Required]
+        public int AdvanceGroupCriteriaID { get; set; }
+        [ForeignKey("AdvanceGroupCriteriaID")]
         public virtual AdvanceGroupCriteria AdvanceGroupCriteria { get; set; }
         public virtual ICollection<TournamentPlayer> PlayerList { get; set; }
     }
