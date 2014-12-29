@@ -295,6 +295,7 @@ namespace TableTennisChampionshipMain.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Session["CurrentUserName"] = null;
             return RedirectToAction("Index", "Home");
         }
 
