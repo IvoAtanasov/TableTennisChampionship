@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
-using TableTennisChampionship.Model.DataBaseModel;
-using TableTennisChampionshipMain.Infrastructure;
-
-
-namespace TableTennisChampionshipMain.ViewModels
+﻿namespace TableTennisChampionshipMain.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.ComponentModel.DataAnnotations;
+    using TableTennisChampionship.Model.DataBaseModel;
+    using TableTennisChampionshipMain.Infrastructure;
+
     public class TournamentInfo : IMapFrom<Tournament>, IHaveCustomMappings
     {
         public int TournamentID { get; set; }

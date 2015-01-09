@@ -12,9 +12,12 @@
     {
         [Key]
         public int TournamentPlayerID { get; set; }
-        [Required]
+
+        public int TournamentID { get; set; }
+        [ForeignKey("TournamentID")]
         public virtual Tournament Tournament { get; set; }
-        [Required]
+        public int PlayerID { get; set; }
+        [ForeignKey("PlayerID")]
         public virtual Player Player { get; set; }
         public int Rank { get; set; }
         public int Points { get; set; }

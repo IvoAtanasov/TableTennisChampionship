@@ -223,6 +223,7 @@
     <Compile Include="ViewModels\PlayerInfo.cs" />
     <Compile Include="ViewModels\SelectedPlayerInfo.cs" />
     <Compile Include="ViewModels\TournamentInfo.cs" />
+    <Compile Include="ViewModels\TournamentPlayerInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
