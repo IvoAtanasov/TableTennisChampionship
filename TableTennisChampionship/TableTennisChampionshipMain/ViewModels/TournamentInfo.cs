@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
-using TableTennisChampionship.Model.DataBaseModel;
-using TableTennisChampionshipMain.Infrastructure;
-
-
-namespace TableTennisChampionshipMain.ViewModels
+﻿namespace TableTennisChampionshipMain.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.ComponentModel.DataAnnotations;
+    using TableTennisChampionship.Model.DataBaseModel;
+    using TableTennisChampionshipMain.Infrastructure;
+
     public class TournamentInfo : IMapFrom<Tournament>, IHaveCustomMappings
     {
         public int TournamentID { get; set; }
@@ -16,7 +15,6 @@ namespace TableTennisChampionshipMain.ViewModels
         [Display(Name="Наименование на турнир")]
         public string TournamentName { get; set; }
         [Required(ErrorMessage = "Не сте задали начална дата на турнира")]
-
         [Display(Name = "Начална дата")]
         public DateTime? StartDate { get; set; }
         [Display(Name = "Крайна дата")]
@@ -31,7 +29,8 @@ namespace TableTennisChampionshipMain.ViewModels
         public int AdvanceGroupCriteriaID { get; set; }
         [Display(Name="Победител")]
         public string WinnerFullName { get; set; }
-
+        public IList<TournamentPlayerInfo> PlayerList { get; set; }
+        public TournamentPlayerInfo NewPlayer { get; set; }
         #region IHaveCustomMappings Members
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)

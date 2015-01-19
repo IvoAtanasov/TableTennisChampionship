@@ -7,6 +7,7 @@ using TableTennisChampionship.Model.DataBaseModel;
 using WorkingWithDataMvc.Data;
 using System.Data.Entity;
 using AutoMapper.QueryableExtensions;
+using System.Net;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
@@ -71,6 +72,25 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             
             }
             return View(trmt);  
+        }
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var selectTour = this.tournament.All()
+                .Where(x => x.TournamentID == id)
+                .Project()
+                .To<TableTennisChampionshipMain.ViewModels.TournamentInfo>()
+                .FirstOrDefault();
+            if (selectTour == null)
+            {
+                return HttpNotFound();
+            }
+            return View(selectTour);
+        
         }
         #region "Private Methods"
         private SelectList AdvanceCriteriaDDL()
