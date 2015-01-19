@@ -254,6 +254,7 @@
     <Content Include="Areas\Administration\Views\Main\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Tournament\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Tournament\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Tournament\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\TableTennisChampionNSI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom.js" />

@@ -90,7 +90,6 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                 return HttpNotFound();
             }
             return View(selectTour);
-        
         }
         #region "Private Methods"
         private SelectList AdvanceCriteriaDDL()
