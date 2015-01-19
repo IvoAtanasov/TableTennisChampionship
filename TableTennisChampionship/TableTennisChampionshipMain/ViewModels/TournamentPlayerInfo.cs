@@ -1,6 +1,4 @@
-﻿
-
-namespace TableTennisChampionshipMain.ViewModels
+﻿namespace TableTennisChampionshipMain.ViewModels
 {
     using System;
     using System.Collections.Generic;
