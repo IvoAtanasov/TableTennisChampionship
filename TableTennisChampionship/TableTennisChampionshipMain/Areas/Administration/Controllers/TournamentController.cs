@@ -85,6 +85,8 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                 .Project()
                 .To<TableTennisChampionshipMain.ViewModels.TournamentInfo>()
                 .FirstOrDefault();
+            ViewBag.AdvanceCriteria = AdvanceCriteriaDDL();
+            ViewBag.TournamentType = TournamentTypeDDL();
             if (selectTour == null)
             {
                 return HttpNotFound();
