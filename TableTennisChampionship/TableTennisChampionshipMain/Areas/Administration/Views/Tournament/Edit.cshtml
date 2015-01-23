@@ -62,7 +62,7 @@
         </div>
     </div>
 }
-
+@{Html.RenderPartial("_PlayerCreate", (TableTennisChampionshipMain.ViewModels.TournamentPlayerInfo)Model.NewPlayer);}
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад към списък", "Index")
 </div>

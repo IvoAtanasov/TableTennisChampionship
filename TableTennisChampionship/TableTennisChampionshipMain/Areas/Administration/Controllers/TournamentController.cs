@@ -8,6 +8,7 @@ using WorkingWithDataMvc.Data;
 using System.Data.Entity;
 using AutoMapper.QueryableExtensions;
 using System.Net;
+using TableTennisChampionshipMain.ViewModels;
 
 namespace TableTennisChampionshipMain.Areas.Administration.Controllers
 {
@@ -87,6 +88,7 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                 .FirstOrDefault();
             ViewBag.AdvanceCriteria = AdvanceCriteriaDDL();
             ViewBag.TournamentType = TournamentTypeDDL();
+            ViewBag.Ranks = RanksDDL();
             if (selectTour == null)
             {
                 return HttpNotFound();
@@ -94,6 +96,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             return View(selectTour);
         }
         #region "Private Methods"
+        /// <summary>
+        /// Връща ViewBag за комбо бокс-продължаване в групата  
+        /// </summary>
+        /// <returns></returns>
         private SelectList AdvanceCriteriaDDL()
         {
             List<SelectListItem> result = new List<SelectListItem>();
@@ -107,6 +113,10 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
             result.AddRange(new SelectList( listAC, "ID", "Name"));
             return new SelectList(result, "Value", "Text");
         }
+        /// <summary>
+        /// Връща ЖиевБаг за комбо бокс- тип на турнира
+        /// </summary>
+        /// <returns></returns>
         private SelectList TournamentTypeDDL()
         {
             List<SelectListItem> result = new List<SelectListItem>();
@@ -119,6 +129,18 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
                          ).ToList();
             result.AddRange(new SelectList(listAC, "ID", "Name"));
             return new SelectList(result, "Value", "Text");
+        }
+        private SelectList RanksDDL()
+        { 
+            List<SelectListItem> result = new List<SelectListItem>();
+            var rank = (from lst in Enum.GetValues(typeof(RanksEight)).Cast<RanksEight>()
+                        select new
+                        {
+                            ID = (int)lst,
+                            Name = lst.ToString()
+                        }).ToList();
+            result.AddRange(new SelectList(rank, "ID", "Name"));
+            return new SelectList( result,"Value","Text");
         }
         #endregion
     }
