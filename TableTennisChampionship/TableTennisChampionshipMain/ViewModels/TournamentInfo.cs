@@ -10,6 +10,10 @@
 
     public class TournamentInfo : IMapFrom<Tournament>, IHaveCustomMappings
     {
+        public TournamentInfo()
+        {
+            this.NewPlayer = new TournamentPlayerInfo();
+        }
         public int TournamentID { get; set; }
         [Required(ErrorMessage="Не сте задали наименование на турнира")]
         [Display(Name="Наименование на турнир")]
