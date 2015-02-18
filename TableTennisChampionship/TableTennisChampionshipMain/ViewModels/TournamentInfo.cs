@@ -33,7 +33,7 @@
         public int AdvanceGroupCriteriaID { get; set; }
         [Display(Name="Победител")]
         public string WinnerFullName { get; set; }
-        public IList<TournamentPlayerInfo> PlayerList { get; set; }
+        public IQueryable<TournamentPlayerInfo> PlayerList { get; set; }
         public TournamentPlayerInfo NewPlayer { get; set; }
         #region IHaveCustomMappings Members
 
