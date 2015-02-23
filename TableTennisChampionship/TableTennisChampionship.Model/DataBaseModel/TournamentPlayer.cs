@@ -20,7 +20,8 @@
         [ForeignKey("PlayerID")]
         public virtual Player Player { get; set; }
         public int Rank { get; set; }
-        public int Points { get; set; }
+        public int PointsForGames { get; set; }
+        public int PointsForTournaments { get; set; }
 
     }
 }

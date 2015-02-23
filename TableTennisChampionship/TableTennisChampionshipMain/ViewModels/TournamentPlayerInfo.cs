@@ -17,7 +17,8 @@
         public int  PlayerID { get; set; }
         public string PlayerFullName { get; set; }
         public int Rank { get; set; }
-        public int Points { get; set; }
+        public int PointsForGames { get; set; }
+        public int PointsForTournaments { get; set; }
 
         #region IHaveCustomMappings Members
         public void CreateMappings(AutoMapper.IConfiguration configuration)
