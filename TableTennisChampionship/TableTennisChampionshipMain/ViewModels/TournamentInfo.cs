@@ -20,9 +20,9 @@
         public string TournamentName { get; set; }
         [Required(ErrorMessage = "Не сте задали начална дата на турнира")]
         [Display(Name = "Начална дата")]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         [Display(Name = "Крайна дата")]
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         [Display(Name="Вид на турнира")]
         public string TournamentTypeDesc { get; set; }
         [Display(Name="Критерии за продъллжаване в групата")]
@@ -33,7 +33,7 @@
         public int AdvanceGroupCriteriaID { get; set; }
         [Display(Name="Победител")]
         public string WinnerFullName { get; set; }
-        public IQueryable<TournamentPlayerInfo> PlayerList { get; set; }
+        public ICollection<TournamentPlayer> PlayerList { get; set; }
         public TournamentPlayerInfo NewPlayer { get; set; }
         #region IHaveCustomMappings Members
 

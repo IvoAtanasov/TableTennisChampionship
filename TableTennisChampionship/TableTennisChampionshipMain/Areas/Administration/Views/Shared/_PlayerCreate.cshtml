@@ -50,14 +50,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Points, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PointsForGames, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Points)
-                @Html.ValidationMessageFor(model => model.Points)
+                @Html.EditorFor(model => model.PointsForGames)
+                @Html.ValidationMessageFor(model => model.PointsForGames)
             </div>
         </div>
 
+
         <div class="form-group">
+            @Html.LabelFor(model => model.PointsForTournaments, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PointsForTournaments)
+                @Html.ValidationMessageFor(model => model.PointsForTournaments)
+            </div>
+        </div><div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

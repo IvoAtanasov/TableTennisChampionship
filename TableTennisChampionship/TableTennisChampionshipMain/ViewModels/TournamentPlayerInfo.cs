@@ -16,8 +16,11 @@
         [Required]
         public int  PlayerID { get; set; }
         public string PlayerFullName { get; set; }
+        [Display(Name="Място")]
         public int Rank { get; set; }
+        [Display(Name="Точки от мачове")]
         public int PointsForGames { get; set; }
+        [Display(Name="Точки от турнири")]
         public int PointsForTournaments { get; set; }
 
         #region IHaveCustomMappings Members
