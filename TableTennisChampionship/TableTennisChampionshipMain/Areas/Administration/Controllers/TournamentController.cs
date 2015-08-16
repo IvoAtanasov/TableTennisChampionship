@@ -17,13 +17,15 @@ namespace TableTennisChampionshipMain.Areas.Administration.Controllers
         private readonly IRepository<Tournament> tournament;
         private readonly IRepository<AdvanceGroupCriteria> _AdvanceGroupCriteria;
         private readonly IRepository<TournamentType> _TournamenType;
+        private readonly IRepository<Player> player;
 
         //Конструктор,който приема репозитори, подадено му от ninject
-        public TournamentController(IRepository<Tournament> tournament, IRepository<AdvanceGroupCriteria> advanceGroupCriteria, IRepository<TournamentType> tournamenType)
+        public TournamentController(IRepository<Tournament> tournament, IRepository<AdvanceGroupCriteria> advanceGroupCriteria, IRepository<TournamentType> tournamenType, IRepository<Player> player)
         {
             this.tournament = tournament;
             this._AdvanceGroupCriteria = advanceGroupCriteria;
             this._TournamenType = tournamenType;
+            this.player=player;
         }
         // GET: Administration/Tournament
         public ActionResult Index()

@@ -253,9 +253,9 @@
     <Content Include="Areas\Administration\Views\PlayerInformation\Index.cshtml" />
     <Content Include="Areas\PlayerInfoStat\Views\web.config" />
     <Content Include="Areas\Administration\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Tournament\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Tournament\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Tournament\Edit.cshtml" />
+    <Content Include="Content\Tournament\Index.cshtml" />
+    <Content Include="Content\Tournament\Create.cshtml" />
+    <Content Include="Content\Tournament\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_PlayerCreate.cshtml" />
     <None Include="Properties\PublishProfiles\TableTennisChampionNSI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
